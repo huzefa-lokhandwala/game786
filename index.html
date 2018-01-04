@@ -1,5 +1,155 @@
 <html>
+    <head>
+       <style>
+           .row{
+               padding-top: 5px;
+              padding-bottom: 5px;
+           }
+           .btn {
+               margin-top: 10px;
+               margin-bottom: 10px;
+           }
+       </style> 
+    </head>
     <body>
-        Hi!
+        <div class="row">
+            <div class="col-md-12">
+                <h2 style="text-align:center">
+                    Game Related Programs
+                </h2>
+            </div>
+        </div>
+       <div class="row">
+           <div class="col-md-6" style="border: 1px solid black">
+                <div id="countdown" class="card">
+                        <div class="card-block" style="text-align:center;font-size:18px;font-weight:bold;">
+                            <div>
+                            <h2 id="title"></h2>
+                            </div>
+                        
+                        <span class="badge badge-default" style="height:80px;width:100px;font-size:30px;padding:10px 0px 5px;" id="days"></span>
+                        <span class="badge badge-default" style="height:80px;width:100px;font-size:30px;padding:10px 0px 5px;" id ="hours"></span>
+                        <span class="badge badge-default" style="height:80px;width:100px;font-size:30px;padding:10px 0px 5px;" id="minutes"></span>
+                        <span class="badge badge-default" style="height:80px;width:100px;font-size:30px;padding:10px 0px 5px;" id="seconds"></span>
+                    </div>
+                    </div> 
+           </div>
+           <div class="col-md-6" style="border: 1px solid black">
+                <div id="countdown" class="card">
+                        <div class="card-block" style="text-align:center;font-size:18px;font-weight:bold;">
+                                <div>
+                                <h2>Risk Attack</h2>
+                                </div>
+               <div class="form-group">
+                   <label for="attack">Attack Numbers:</label>
+                   <input id="attack" type="number" placeholder="Attack Army Number" class="form-control" />
+               </div>
+               <div class="form-group">
+                   <label for="defend">Defense Numbers:</label>
+                   <input class="form-control" id="defend" type="number"placeholder="Defend Army Number" />
+               </div>
+            <div class="form-group">
+                <label for="promptInterval">Prompt Interval:</label>
+                <input id="promptInterval" type="number" placeholder="Prompt Interval" class="form-control" />
+            </div>
+            
+            <button type="button" class="btn btn-primary" onclick="attackSequence()">Attack</button>
+            
+            <div id="riskResults"></div>
+            
+           </div>
+       </div>
+       </div>
+       </div>
+
+       <div class="row">
+           <div class="col-md-6" style="border: 1px solid black">
+                <div>
+                    <h2 style="text-align:center">Code Names board</h2>
+                </div>
+                <div class="row">
+                        <div class="col-md-6" style="text-align:center">
+                           <button type="button" class="btn btn-primary" onclick="randomGenerate()">3 team board</button>
+                           
+                       </div>
+                       <div class="col-md-6" style="text-align:center">
+                            <button type="button" class="btn btn-primary" onclick="twoTeamGenerate()">2 team board</button>
+                       </div>  
+                    </div>
+                <div id="results" class="card" style="text-align:center;padding-top:20px;margin-bottom:10px;">
+                     Generate Me!!
+                 </div>
+                 
+           </div>
+           <div class="col-md-6" style="border: 1px solid black">
+                <div>
+                    <h2 id="title" style="text-align:center">Words to be Guessed</h2>
+                    <p style="text-align:center">Enter with commas in between</p>
+                </div>
+                <div id="wordInputs">
+                        <div class="form-group">
+                            <label for="red">Red team words</label>
+                            <textarea class="form-control" id="red"></textarea>    
+                        </div>
+                       <div class="form-group">
+                        <label for="blue">Blue team words</label>
+                        <textarea class="form-control" id="blue"></textarea>
+                       </div>
+                        
+                        <div class="form-group">
+                            <label for="green">Green team words</label>
+                            <textarea class="form-control" id="green"></textarea>
+                        </div>
+                       <button onclick="words()" class="btn btn-primary">Submit Words</button>
+                    </div>
+                    <div id="resultDiv"></div>
+            </div>
+       </div>
+       <div class="row">
+           <div class="col-md-4 offset-md-5">
+               <button class="btn btn-warning" onclick="clearClues()">Clear All Clues</button>
+           </div>
+       </div>
+       <div class="row">
+           <div class="col-md-4">
+            <h3>Red Clues</h3>
+            <input type="text" id="redClue" class="form-control" /><button class="btn btn-danger" onclick="AddClue('red')">Add</button>
+            
+            <ul class="list-group" id="redClues">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Word
+                        <span class="badge badge-primary badge-pill">Number</span>
+                </li>
+            </ul>
+           </div>
+           <div class="col-md-4">
+                <h3>Blue Clues</h3>
+            <input type="text" id="blueClue" class="form-control" /><button class="btn btn-danger" onclick="AddClue('blue')">Add</button>
+            <ul class="list-group" id="blueClues">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Word
+                            <span class="badge badge-primary badge-pill">Number</span>
+                    </li>
+                </ul>
+           </div>
+           <div class="col-md-4">
+                <h3>Green Clues</h3>
+            <input type="text" id="greenClue" class="form-control" /><button class="btn btn-danger" onclick="AddClue('green')">Add</button>
+            <ul class="list-group" id="greenClues">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Word
+                            <span class="badge badge-primary badge-pill">Number</span>
+                    </li>
+                </ul>
+           </div>
+       </div>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        <script src="js/RiskAttack.js"></script>
+        <script src="js/game.js"></script> 
+        <script src="js/codenames.js"></script>
+        
     </body>
 </html>
