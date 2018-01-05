@@ -204,12 +204,12 @@ var words = function(){
     bluewords = bluesubmitted.value.split(",");
     greenwords = greensubmitted.value.split(",");
 
-   
+   numberwords = redwords.length + bluewords.length + greenwords.length;
     var string = "<table class='table table-striped'><tr><td>Red words</td><td>Blue words</td><td>Green words</td></tr>";
     var redcount = 0;
     var bluecount = 0;
     var greencount = 0;
-    for(v=0;v<=9/3;v++)
+    for(v=0;v<9;v++)
     {
         string += "<tr>"
         if(redwords[redcount] != null){
