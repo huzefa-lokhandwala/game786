@@ -72,3 +72,7 @@ var test = function(){
 }
 
 test()
+
+var loadPage = function(name){
+    window.location.href = name;
+}

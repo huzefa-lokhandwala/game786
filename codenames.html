@@ -1,0 +1,144 @@
+<html>
+        <head>
+           <style>
+               .row{
+                   padding-top: 5px;
+                  padding-bottom: 5px;
+               }
+               .btn {
+                   margin-top: 10px;
+                   margin-bottom: 10px;
+               }
+               .placeholder {
+                height: 100px;
+                width: 100px;
+                padding: 15px;
+                margin: 50px auto;
+                border: 1px solid gray;
+                border-radius: 10px;  
+                font-size:40px;
+               }
+           </style> 
+        </head>
+        <body>
+           <div class="container-fluid">
+                
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 style="text-align:center">
+                        Game Related Programs
+                    </h2>
+                   <hr />
+                    <div style="text-align:center;font-size:18px;font-weight:bold;">
+                        <div>
+                        <h2 id="title"></h2>
+                        </div>
+                    
+                    <span class="badge badge-default" style="height:80px;width:100px;font-size:30px;padding:10px 0px 5px;" id="days"></span>
+                    <span class="badge badge-default" style="height:80px;width:100px;font-size:30px;padding:10px 0px 5px;" id ="hours"></span>
+                    <span class="badge badge-default" style="height:80px;width:100px;font-size:30px;padding:10px 0px 5px;" id="minutes"></span>
+                    <span class="badge badge-default" style="height:80px;width:100px;font-size:30px;padding:10px 0px 5px;" id="seconds"></span>
+                </div>
+                </div>
+            </div>
+            <hr />
+            <nav class="nav nav-pills nav-fill">
+                    <a class="nav-item nav-link" onclick="loadPage('index.html')" style='cursor:pointer'>Risk & Catan</a>
+                    <a class="nav-item nav-link active" onclick="loadPage('codenames.html')" style='cursor:pointer'>Code Names</a>
+                  </nav>
+           <div class="row">
+            <div class="col-md-4 offset-md-4" style='text-align:center'>
+                <h2>Code Names Programs</h2>
+            </div>
+        </div>
+           <div class="row">
+               <div class="col-md-6" style="border: 1px solid black">
+                    <div>
+                        <h2 style="text-align:center">Code Names board</h2>
+                    </div>
+                    <div class="row">
+                            <div class="col-sm" style="text-align:center">
+                               <button type="button" class="btn btn-primary" onclick="randomGenerate()">3 team board</button>
+                               
+                           </div>
+                           <div class="col-sm" style="text-align:center">
+                                <button type="button" class="btn btn-primary" onclick="twoTeamGenerate()">2 team board</button>
+                           </div>  
+                        </div>
+                    <div id="results" class="card" style="text-align:center;padding-top:20px;margin-bottom:10px;">
+                         Generate Me!!
+                     </div>
+                     
+               </div>
+               <div class="col-md-6" style="border: 1px solid black">
+                    <div>
+                        <h2 id="title" style="text-align:center">Words to be Guessed</h2>
+                        <p style="text-align:center">Enter with commas in between</p>
+                    </div>
+                    <div id="wordInputs">
+                            <div class="form-group">
+                                <label for="red">Red team words</label>
+                                <textarea class="form-control" id="red"></textarea>    
+                            </div>
+                           <div class="form-group">
+                            <label for="blue">Blue team words</label>
+                            <textarea class="form-control" id="blue"></textarea>
+                           </div>
+                            
+                            <div class="form-group">
+                                <label for="green">Green team words</label>
+                                <textarea class="form-control" id="green"></textarea>
+                            </div>
+                           <button onclick="words()" class="btn btn-primary">Submit Words</button>
+                        </div>
+                        <div id="resultDiv"></div>
+                </div>
+           </div>
+           <div class="row">
+               <div class="col-md-4 offset-md-5">
+                   <button class="btn btn-warning" onclick="clearClues()">Clear All Clues</button>
+               </div>
+           </div>
+           <div class="row">
+               <div class="col-sm">
+                <h3>Red Clues</h3>
+                <input type="text" id="redClue" class="form-control" /><button class="btn btn-danger" onclick="AddClue('red')">Add</button>
+                
+                <ul class="list-group" id="redClues">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Word
+                            <span class="badge badge-primary badge-pill">Number</span>
+                    </li>
+                </ul>
+               </div>
+               <div class="col-sm">
+                    <h3>Blue Clues</h3>
+                <input type="text" id="blueClue" class="form-control" /><button class="btn btn-danger" onclick="AddClue('blue')">Add</button>
+                <ul class="list-group" id="blueClues">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Word
+                                <span class="badge badge-primary badge-pill">Number</span>
+                        </li>
+                    </ul>
+               </div>
+               <div class="col-sm">
+                    <h3>Green Clues</h3>
+                <input type="text" id="greenClue" class="form-control" /><button class="btn btn-danger" onclick="AddClue('green')">Add</button>
+                <ul class="list-group" id="greenClues">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Word
+                                <span class="badge badge-primary badge-pill">Number</span>
+                        </li>
+                    </ul>
+               </div>
+           </div>
+           </div>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+            <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+            <script src="js/game.js"></script> 
+            <script src="js/codenames.js"></script>
+            
+        </body>
+    </html>
