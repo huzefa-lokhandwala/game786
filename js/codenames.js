@@ -267,9 +267,12 @@ var AddClue = function(team){
         element = document.getElementById('greenClues')
         input = document.getElementById('greenClue');
     }
-    var parts = input.value.split(" ");
-    input.value = "";
-    element.innerHTML += "<li class='list-group-item d-flex justify-content-between align-items-center'>"  + parts[0] + "<span class='badge badge-primary badge-pill' onclick='decrement(this)' style='cursor:pointer'>" + parts[1] + "</span></li>";  
+    if(input.value != ""){
+        var parts = input.value.split(" ");
+        input.value = "";
+        element.innerHTML += "<li class='list-group-item d-flex justify-content-between align-items-center'>"  + parts[0] + "<span class='badge badge-primary badge-pill' onclick='decrement(this)' style='cursor:pointer'>" + parts[1] + "</span></li>"; 
+    }
+   
 }
 
 var decrement = function(el)
