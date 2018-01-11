@@ -97,3 +97,27 @@ var citiesKnightsRoll = function(){
     secondDiceDiv.innerText = dice2;
     thirdDiceDiv.innerText = dice3Letter;
 }
+
+var changeColor = function(color){
+    var img = document.getElementById('robber');
+    switch(color){
+        case "red": 
+            robber.style.borderColor = 'red';
+            break;
+        case "blue": 
+            robber.style.borderColor = 'blue';
+            break; 
+        case "white": 
+            robber.style.borderColor = 'cornsilk';
+            break;
+        case "green": 
+            robber.style.borderColor = 'green';
+            break;
+        case "orange": 
+            robber.style.borderColor = 'orange';
+            break;
+        case "brown": 
+            robber.style.borderColor = 'brown';
+            break;   
+    }
+}
