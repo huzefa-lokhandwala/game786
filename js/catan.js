@@ -117,7 +117,7 @@ var changeColor = function(color){
             robber.style.borderColor = 'orange';
             break;
         case "brown": 
-            robber.style.borderColor = 'brown';
+            robber.style.borderColor = 'BurlyWood';
             break;   
     }
 }
